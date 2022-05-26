@@ -3,7 +3,11 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   ${() => css`
     width: 15%;
-    height: 90vh;
-    background: black;
+    margin: 5px;
+    padding: 10px;
+
+    > img {
+      max-width: 100%;
+    }
   `}
 `;

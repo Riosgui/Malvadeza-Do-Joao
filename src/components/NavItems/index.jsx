@@ -1,9 +1,9 @@
 import P from 'prop-types';
 import * as Styled from './styles';
 
-export const NavItems = ({ children, lightMode = false }) => {
+export const NavItems = ({ children }) => {
   return (
-    <Styled.Container lightMode={lightMode}>
+    <Styled.Container>
       <h6 style={{ fontWeight: '500' }}>{children}</h6>
     </Styled.Container>
   );
@@ -11,5 +11,4 @@ export const NavItems = ({ children, lightMode = false }) => {
 
 NavItems.propTypes = {
   children: P.node.isRequired,
-  lightMode: P.bool,
 };
