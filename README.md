@@ -6,12 +6,13 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
 - V 1.0:
   - Primeiro commit e inicio do projeto;
   - Criação dos itens que estarão no Menu e o proprio Menu, faltando estilizar melhor cada um ainda;
-<<<<<<< HEAD
 
 - V 1.1:
   - Estilizei um pouco mais os componentes;
   - Acresentei um icone temporario que eventualmente irá virar a logo do projeto;
   - Criei os componentes ContentPage, CurrentMusic, MusicCard, MusicController e Player, estilizei cada um da forma como vejo o projeto atualmente e melhorarei eventualmente;
   - Criado uma estilização pro template Home e acresentado todos os devidos componentes lá, já dando a visualização do escopo do projeto;
-=======
->>>>>>> 69c1e12c1af6c4d0a378bbabfe515ea24006388d
+
+- V 1.2:
+  - Botão de Play funcionando, atualmente tocando somente Attention - Charlie Puth;
+  - Falta uma melhor estilização e usabilidade no player, coisa que será trabalhada nas versões posteriores;

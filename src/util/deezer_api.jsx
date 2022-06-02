@@ -1,11 +1,7 @@
-import $ from 'jquery';
-
 export const DeezerAPI = () => {
-  $.ajax({
-    method: 'GET',
-    dataType: 'jsonp',
-    url: 'https://api.deezer.com/playlist/4341978/tracks?limit=2',
-  }).then((dados) => {
-    console.log(dados);
-  });
+  return (
+    <audio>
+      <source src="https://drive.google.com/uc?id=1emzFaAEN7st7btLKdHGNMXfnKNTrtV1g&export=download" type="audio/mp3" />
+    </audio>
+  );
 };
