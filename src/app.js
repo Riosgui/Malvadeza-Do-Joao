@@ -1,17 +1,24 @@
-import {openDb} from './SQLite/configDB.js'
-import { createTable } from './Controller/Pessoa.js'
-import pessoa from './Dep/pessoa.js';
 import express from 'express';
+import { createTableMusic } from './Controller/ControllMusics.js';
+import { musicDelete, musicInsert, musicSelectAll, musicSelectOne, musicUpdate} from './Dep/musicFunctions.js';
+
+createTableMusic()
 
 const app = express();
 app.use(express.json())
 
-createTable()
-
 app.get('/', function(req, res){
-    res.send('Opa')
+    res.send('A bolsinha está sendo rodada')
 })
 
-app.post('/pessoa', pessoa)
+app.get('/musicAll', musicSelectAll)
 
-app.listen(4000, () => console.log("Abriu a Gadolandia."))
+app.get('/musicOne', musicSelectOne)
+
+app.post('/musicInsert', musicInsert)
+
+app.put('/musicUpdate', musicUpdate)
+
+app.delete('/musicDelete', musicDelete)
+
+app.listen(4000, () => console.log("O portal pro inferno foi aberto."))
