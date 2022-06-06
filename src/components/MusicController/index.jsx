@@ -1,8 +1,8 @@
 import * as Styled from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
-import { DeezerAPI } from '../../util/deezer_api';
 import { useState } from 'react';
+import { APIMusic } from '../../util/API-music';
 
 export const MusicController = () => {
   const [currentIcon, setCurrentIcon] = useState(FontAwesome.faCirclePlay);
@@ -22,10 +22,18 @@ export const MusicController = () => {
 
   return (
     <Styled.Container>
-      <FontAwesomeIcon icon={FontAwesome.faCircleArrowLeft} />
-      <FontAwesomeIcon onClick={currentAction == 'Play' ? PlayMusic : PauseMusic} id="BtnPlay" icon={currentIcon} />
-      <FontAwesomeIcon icon={FontAwesome.faCircleArrowRight} />
-      <DeezerAPI />
+      <Styled.BtnPlayer>
+        <FontAwesomeIcon icon={FontAwesome.faCircleArrowLeft} />
+      </Styled.BtnPlayer>
+
+      <Styled.BtnPlayer>
+        <FontAwesomeIcon onClick={currentAction == 'Play' ? PlayMusic : PauseMusic} id="BtnPlay" icon={currentIcon} />
+      </Styled.BtnPlayer>
+
+      <Styled.BtnPlayer>
+        <FontAwesomeIcon icon={FontAwesome.faCircleArrowRight} />
+      </Styled.BtnPlayer>
+      <APIMusic />
     </Styled.Container>
   );
 };

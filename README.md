@@ -16,3 +16,8 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
 - V 1.2:
   - Botão de Play funcionando, atualmente tocando somente Attention - Charlie Puth;
   - Falta uma melhor estilização e usabilidade no player, coisa que será trabalhada nas versões posteriores;
+
+- V 1.3:
+  - Adição no efeito dos botões do player, pois antes ao clicar não havia efeito algum;
+  - Adição de um iframe que será responsavel por tocar as musicas;
+  - Teste do retorno da API ao banco de dados;

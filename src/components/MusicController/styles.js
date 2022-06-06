@@ -6,11 +6,24 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    > svg {
-      width: 4%;
-      height: 4%;
-      margin: 0 10px;
-    }
   `}
+`;
+
+export const BtnPlayer = styled.button`
+  ${() => css`
+    background: none;
+    border: none;
+    width: 7%;
+    display: flex;
+    justify-content: center;
+  `}
+  & :active {
+    transform: scale(0.98);
+  }
+  > svg {
+    color: white;
+    width: 88%;
+    height: 88%;
+    margin: 0 10px;
+  }
 `;
