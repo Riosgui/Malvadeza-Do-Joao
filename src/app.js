@@ -21,4 +21,4 @@ app.put('/musicUpdate', musicUpdate)
 
 app.delete('/musicDelete', musicDelete)
 
-app.listen(4000, () => console.log("O portal pro inferno foi aberto."))
+app.listen(process.env.PORT || 4000, () => console.log("O portal pro inferno foi aberto."))
