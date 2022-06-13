@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { createTableMusic } from './Controller/ControllMusics.js';
 import { musicDelete, musicInsert, musicSelectAll, musicSelectOne, musicUpdate} from './Dep/musicFunctions.js';
 
@@ -6,6 +7,7 @@ createTableMusic()
 
 const app = express();
 app.use(express.json())
+app.use(cors())
 
 app.get('/', function(req, res){
     res.send('A bolsinha está sendo rodada')
