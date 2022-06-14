@@ -1,69 +1,30 @@
 import { MusicCard } from '../MusicCard';
+import { APIMusic } from '../../util/API-music';
+import { useState } from 'react';
 import * as Styled from './styles';
 
 export const ContentPage = () => {
-  return (
-    <Styled.Container>
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-      <MusicCard
-        srcImg="https://dailymix-images.scdn.co/v2/img/ab6761610000e5eb29af2ffb6f4ddd6324f878bc/1/pt/default"
-        title="Playlist 1"
-        descript="Está é a primeira playlist"
-      />
-    </Styled.Container>
-  );
+  const [musics, setMusics] = useState();
+  let doc = [];
+
+  async function getMusics() {
+    const musicsAPI = await APIMusic();
+    setMusics(musicsAPI);
+  }
+
+  if (musics == null) {
+    getMusics();
+  } else {
+    for (let i = 0; i < musics.length; i++) {
+      doc[i] = (
+        <MusicCard
+          srcImg={'https://img.youtube.com/vi/' + musics[i].music_id + '/0.jpg'}
+          title={musics[i].music_name}
+          descript={musics[i].music_artist}
+        />
+      );
+    }
+  }
+
+  return <Styled.Container>{doc}</Styled.Container>;
 };

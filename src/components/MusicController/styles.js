@@ -13,7 +13,7 @@ export const BtnPlayer = styled.button`
   ${() => css`
     background: none;
     border: none;
-    width: 7%;
+    width: 5%;
     display: flex;
     justify-content: center;
   `}

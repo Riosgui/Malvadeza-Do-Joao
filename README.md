@@ -21,3 +21,9 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
   - Adição no efeito dos botões do player, pois antes ao clicar não havia efeito algum;
   - Adição de um iframe que será responsavel por tocar as musicas;
   - Teste do retorno da API ao banco de dados;
+
+- V 1.4:
+  - Instalado a dependecia React Player;
+  - Agora a musica tocada é diretamente do Youtube ao inves de ser do Drive como na versão 1.2;
+  - As musicas mostradas na Home são as que possui no banco de dados até o momento;
+  - Feito as infos da música com o retorno da API que roda no Heroku;

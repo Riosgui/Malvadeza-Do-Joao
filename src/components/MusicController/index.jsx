@@ -3,25 +3,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { APIMusic } from '../../util/API-music';
+import ReactPlayer from 'react-player/youtube';
 
 export const MusicController = () => {
   const [currentIcon, setCurrentIcon] = useState(FontAwesome.faCirclePlay);
-  const [currentAction, setCurrentAction] = useState('Play');
+  const [currentAction, setCurrentAction] = useState('Pause');
+  const [musics, setMusics] = useState();
 
   function PlayMusic() {
-    setCurrentIcon(FontAwesome.faCirclePause);
+    setCurrentIcon(FontAwesome.faCirclePlay);
     setCurrentAction('Pause');
-    document.querySelector('audio').play();
   }
 
   function PauseMusic() {
-    setCurrentIcon(FontAwesome.faCirclePlay);
+    setCurrentIcon(FontAwesome.faCirclePause);
     setCurrentAction('Play');
-    document.querySelector('audio').pause();
   }
+
+  async function getMusics() {
+    const musicsAPI = await APIMusic();
+    setMusics(musicsAPI);
+  }
+
+  let link = '';
+
+  if (musics == null) {
+    getMusics();
+  } else {
+    link = 'https://www.youtube.com/embed/' + musics[0].music_id;
+  }
+
+  console.log(musics);
 
   return (
     <Styled.Container>
+      <ReactPlayer style={{ display: 'none' }} url={link} playing={currentAction == 'Play' ? true : false} volume="1" />
       <Styled.BtnPlayer>
         <FontAwesomeIcon icon={FontAwesome.faCircleArrowLeft} />
       </Styled.BtnPlayer>
@@ -33,7 +49,6 @@ export const MusicController = () => {
       <Styled.BtnPlayer>
         <FontAwesomeIcon icon={FontAwesome.faCircleArrowRight} />
       </Styled.BtnPlayer>
-      <APIMusic />
     </Styled.Container>
   );
 };
