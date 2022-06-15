@@ -27,3 +27,8 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
   - Agora a musica tocada é diretamente do Youtube ao inves de ser do Drive como na versão 1.2;
   - As musicas mostradas na Home são as que possui no banco de dados até o momento;
   - Feito as infos da música com o retorno da API que roda no Heroku;
+
+- V 1.5:
+  - Criado uma função para selecionar musicas ao clicar na home;
+  - Troca de musicas ao clicar é possivel, embora que falte otimizar este sistema;
+  - Trabalhando na troca de informações da música que está tocando no momento;

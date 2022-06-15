@@ -1,8 +1,9 @@
 import * as Styled from './styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { APIMusic } from '../../util/API-music';
+import { link } from '../../util/selectMusic';
 import ReactPlayer from 'react-player/youtube';
 
 export const MusicController = () => {
@@ -25,19 +26,13 @@ export const MusicController = () => {
     setMusics(musicsAPI);
   }
 
-  let link = '';
-
   if (musics == null) {
     getMusics();
-  } else {
-    link = 'https://www.youtube.com/embed/' + musics[0].music_id;
   }
-
-  console.log(musics);
 
   return (
     <Styled.Container>
-      <ReactPlayer style={{ display: 'none' }} url={link} playing={currentAction == 'Play' ? true : false} volume="1" />
+      <ReactPlayer style={{ display: 'none' }} url={link} playing={currentAction == 'Play' ? true : false} />
       <Styled.BtnPlayer>
         <FontAwesomeIcon icon={FontAwesome.faCircleArrowLeft} />
       </Styled.BtnPlayer>

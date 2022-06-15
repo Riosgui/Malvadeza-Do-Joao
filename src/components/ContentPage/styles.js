@@ -9,6 +9,6 @@ export const Container = styled.div`
     color: white;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
   `}
 `;

@@ -1,33 +1,21 @@
 import * as Styled from './styles';
-import { APIMusic } from '../../util/API-music';
+import { artistMusic, imgMusic, titleMusic } from '../../util/selectMusic';
 import { useState } from 'react';
 
 export const CurrentMusic = () => {
-  const [musics, setMusics] = useState();
+  const [title, setTitle] = useState();
 
-  let img = '';
-  let title = '';
-  let artist = '';
+  console.log('currentTitle: ' + title);
 
-  async function getMusics() {
-    const musicsAPI = await APIMusic();
-    setMusics(musicsAPI);
+  if (title != titleMusic) {
+    setTitle(titleMusic);
   }
-
-  if (musics == null) {
-    getMusics();
-  } else {
-    img = 'https://img.youtube.com/vi/' + musics[0].music_id + '/0.jpg';
-    title = musics[0].music_name;
-    artist = musics[0].music_artist;
-  }
-
   return (
-    <Styled.Container>
-      <img src={img} alt="Capa da Música" />
+    <Styled.Container id="CurrentMusic">
+      <img src={imgMusic} alt="Capa da Música" />
       <Styled.MusicDetails>
-        <h6>{title}</h6>
-        <p>{artist}</p>
+        <h6>{titleMusic}</h6>
+        <p>{artistMusic}</p>
       </Styled.MusicDetails>
     </Styled.Container>
   );
