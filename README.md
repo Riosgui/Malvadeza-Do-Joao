@@ -32,3 +32,6 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
   - Criado uma função para selecionar musicas ao clicar na home;
   - Troca de musicas ao clicar é possivel, embora que falte otimizar este sistema;
   - Trabalhando na troca de informações da música que está tocando no momento;
+
+- V 1.6:
+  - Atualiza a música atual de acordo com a música que está sendo tocada, a otimização desta parte ainda precisa ser feita e farei isso quando tiver uma ideia mirabolante;

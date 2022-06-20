@@ -19,9 +19,9 @@ export const ContentPage = () => {
     for (let i = 0; i < musics.length; i++) {
       doc[i] = (
         <MusicCard
+          key={musics[i].music_id}
           click={() => {
             selectMusic(musics[i]);
-            document.querySelector('#CurrentMusic').setAttribute('style', 'display: flex');
           }}
           srcImg={'https://img.youtube.com/vi/' + musics[i].music_id + '/0.jpg'}
           title={musics[i].music_name}

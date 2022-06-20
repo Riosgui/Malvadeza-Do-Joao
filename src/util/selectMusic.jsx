@@ -11,10 +11,5 @@ export async function selectMusic(music) {
   artistMusic = await music.music_artist;
 
   imgMusic = 'https://img.youtube.com/vi/' + idMusic + '/0.jpg';
-
-  console.log('selectLink: ' + link);
-  console.log('selectId: ' + idMusic);
-  console.log('selectTitle: ' + titleMusic);
-  console.log('selectArtist: ' + artistMusic);
 }
 export { link, idMusic, titleMusic, artistMusic, imgMusic };

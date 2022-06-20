@@ -1,20 +1,24 @@
 import * as Styled from './styles';
-import { artistMusic, imgMusic, titleMusic } from '../../util/selectMusic';
 import { useState } from 'react';
+import { artistMusic, imgMusic, titleMusic } from '../../util/selectMusic';
 
 export const CurrentMusic = () => {
   const [title, setTitle] = useState();
-
-  console.log('currentTitle: ' + title);
-
-  if (title != titleMusic) {
-    setTitle(titleMusic);
-  }
+  setInterval(() => {
+    if (titleMusic != title) {
+      setTitle(titleMusic);
+    }
+  }, 100);
   return (
-    <Styled.Container id="CurrentMusic">
-      <img src={imgMusic} alt="Capa da Música" />
+    <Styled.Container>
+      <img
+        src={
+          imgMusic == '' ? 'https://pbs.twimg.com/profile_images/1478713709824561159/jmSw5Wr4_400x400.jpg' : imgMusic
+        }
+        alt="Capa da Música"
+      />
       <Styled.MusicDetails>
-        <h6>{titleMusic}</h6>
+        <h6>{title}</h6>
         <p>{artistMusic}</p>
       </Styled.MusicDetails>
     </Styled.Container>

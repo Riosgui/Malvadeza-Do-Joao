@@ -12,7 +12,7 @@ export const MusicCard = ({ srcImg, title, descript, click }) => {
 };
 
 MusicCard.propTypes = {
-  click: P.string,
+  click: P.func,
   srcImg: P.string.isRequired,
   title: P.string.isRequired,
   descript: P.string.isRequired,
