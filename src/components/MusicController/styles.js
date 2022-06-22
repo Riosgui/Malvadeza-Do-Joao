@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${() => css`
-    width: 60vw;
+    width: 50vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@ export const BtnPlayer = styled.button`
   ${() => css`
     background: none;
     border: none;
-    width: 5%;
+    width: 5.4%;
     display: flex;
     justify-content: center;
   `}
