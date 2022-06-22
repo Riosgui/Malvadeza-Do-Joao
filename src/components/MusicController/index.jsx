@@ -1,59 +1,71 @@
 import * as Styled from './styles';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fila } from '../../util/selectMusic';
 import ReactPlayer from 'react-player/youtube';
 
 export const MusicController = () => {
   const [currentIcon, setCurrentIcon] = useState(FontAwesome.faCirclePlay);
-  const [currentAction, setCurrentAction] = useState('Pause');
+  const [currentAction, setCurrentAction] = useState(false);
   const [musicFila, setMusicFila] = useState('');
   const [musicaAtual, setMusicaAtual] = useState(0);
 
-  // setInterval(() => {
-  //   // setMusicFila(fila[musicaAtual].link);
-  //   console.log(musicaAtual);
-  // }, 1000);
+  useEffect(() => {
+    async function defineMusic() {
+      setMusicFila(await fila[musicaAtual].link);
+    }
+    defineMusic();
+  }, [musicaAtual]);
 
   function PlayMusic() {
     setCurrentIcon(FontAwesome.faCirclePlay);
-    setCurrentAction('Pause');
+    setCurrentAction(false);
     setMusicFila(fila[musicaAtual].link);
   }
 
   function PauseMusic() {
     setCurrentIcon(FontAwesome.faCirclePause);
-    setCurrentAction('Play');
+    setCurrentAction(true);
     setMusicFila(fila[musicaAtual].link);
   }
 
-  function NextMusic() {
+  async function NextMusic() {
     if (musicaAtual < fila.length) {
       setMusicaAtual(musicaAtual + 1);
-      console.log(musicaAtual);
-      setMusicFila(fila[musicaAtual].link);
-      setCurrentIcon(FontAwesome.faCirclePause);
     }
+    setMusicFila(fila[musicaAtual].link);
+    setCurrentIcon(FontAwesome.faCirclePause);
+    await PauseMusic();
+    () => {
+      PlayMusic();
+    };
   }
 
-  function PrevMusic() {
+  async function PrevMusic() {
     if (musicaAtual > 0) {
       setMusicaAtual(musicaAtual - 1);
-      console.log(musicaAtual);
-      setMusicFila(fila[musicaAtual].link);
     }
+    console.log(musicaAtual);
+    setMusicFila(fila[musicaAtual].link);
+    setCurrentIcon(FontAwesome.faCirclePause);
+    await PauseMusic();
+    () => {
+      PlayMusic();
+    };
   }
+
+  console.log(musicaAtual);
 
   return (
     <Styled.Container>
-      <ReactPlayer style={{ display: 'none' }} url={musicFila} playing={currentAction == 'Play' ? true : false} />
+      <ReactPlayer style={{ display: 'none' }} url={musicFila} playing={currentAction} />
       <Styled.BtnPlayer>
         <FontAwesomeIcon onClick={PrevMusic} icon={FontAwesome.faCircleArrowLeft} />
       </Styled.BtnPlayer>
 
       <Styled.BtnPlayer>
-        <FontAwesomeIcon onClick={currentAction == 'Play' ? PlayMusic : PauseMusic} id="BtnPlay" icon={currentIcon} />
+        <FontAwesomeIcon onClick={currentAction == true ? PlayMusic : PauseMusic} id="BtnPlay" icon={currentIcon} />
       </Styled.BtnPlayer>
 
       <Styled.BtnPlayer>

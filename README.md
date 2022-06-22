@@ -35,3 +35,9 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
 
 - V 1.6:
   - Atualiza a música atual de acordo com a música que está sendo tocada, a otimização desta parte ainda precisa ser feita e farei isso quando tiver uma ideia mirabolante;
+
+- V 1.7:
+  - Inclusão das funções aos botões de musica anterior e proxima musica, ainda um pouco bugado, mas "funcional";
+
+- V 1.7.1:
+  - Ajustes na funcionalidade dos botões de trocar de música para que seja mais funcional;
