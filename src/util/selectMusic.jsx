@@ -19,11 +19,17 @@ export async function selectMusic(music) {
     if (allMusics[i].music_id == idMusic) {
       fila[0] = allMusics[i];
       fila[0].link = 'https://www.youtube.com/embed/' + (await allMusics[i].music_id);
-      console.log(fila);
     } else {
       fila[i + 1] = allMusics[i];
       fila[i + 1].link = 'https://www.youtube.com/embed/' + (await allMusics[i].music_id);
     }
   }
+}
+export async function changeDetailsMusic(number) {
+  idMusic = await fila[number].music_id;
+  titleMusic = await fila[number].music_name;
+  artistMusic = await fila[number].music_artist;
+  imgMusic = 'https://img.youtube.com/vi/' + (await idMusic) + '/0.jpg';
+  console.log(titleMusic);
 }
 export { link, idMusic, titleMusic, artistMusic, imgMusic, fila };

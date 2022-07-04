@@ -2,7 +2,7 @@ import * as Styled from './styles';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { fila } from '../../util/selectMusic';
+import { changeDetailsMusic, fila } from '../../util/selectMusic';
 import ReactPlayer from 'react-player/youtube';
 
 export const MusicController = () => {
@@ -13,7 +13,9 @@ export const MusicController = () => {
 
   useEffect(() => {
     async function defineMusic() {
-      setMusicFila(await fila[musicaAtual].link);
+      if (fila.length != 0) {
+        setMusicFila(await fila[musicaAtual].link);
+      }
     }
     defineMusic();
   }, [musicaAtual]);
@@ -30,26 +32,27 @@ export const MusicController = () => {
     setMusicFila(fila[musicaAtual].link);
   }
 
-  async function NextMusic() {
+  function NextMusic() {
     if (musicaAtual < fila.length) {
       setMusicaAtual(musicaAtual + 1);
     }
+    changeDetailsMusic(musicaAtual + 1);
     setMusicFila(fila[musicaAtual].link);
     setCurrentIcon(FontAwesome.faCirclePause);
-    await PauseMusic();
+    PauseMusic();
     () => {
       PlayMusic();
     };
   }
 
-  async function PrevMusic() {
+  function PrevMusic() {
     if (musicaAtual > 0) {
       setMusicaAtual(musicaAtual - 1);
     }
-    console.log(musicaAtual);
+    changeDetailsMusic(musicaAtual - 1);
     setMusicFila(fila[musicaAtual].link);
     setCurrentIcon(FontAwesome.faCirclePause);
-    await PauseMusic();
+    PauseMusic();
     () => {
       PlayMusic();
     };

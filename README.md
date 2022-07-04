@@ -41,3 +41,6 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
 
 - V 1.7.1:
   - Ajustes na funcionalidade dos botões de trocar de música para que seja mais funcional;
+
+- V 1.8:
+  - Agora ao trocar de música as informações da música sendo tocada são ajustadas também;
