@@ -2,14 +2,16 @@ import * as Styled from './styles';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { changeDetailsMusic, fila } from '../../util/selectMusic';
+import { alteraState, change, changeDetailsMusic, fila } from '../../util/selectMusic';
 import ReactPlayer from 'react-player/youtube';
+import Duration from '../../util/test-duration';
 
 export const MusicController = () => {
   const [currentIcon, setCurrentIcon] = useState(FontAwesome.faCirclePlay);
   const [currentAction, setCurrentAction] = useState(false);
   const [musicFila, setMusicFila] = useState('');
   const [musicaAtual, setMusicaAtual] = useState(0);
+  const [changeState, setChangeState] = useState(0);
 
   useEffect(() => {
     async function defineMusic() {
@@ -19,6 +21,12 @@ export const MusicController = () => {
     }
     defineMusic();
   }, [musicaAtual]);
+
+  setInterval(() => {
+    if (changeState != change) {
+      setChangeState(change);
+    }
+  }, 100);
 
   function PlayMusic() {
     setCurrentIcon(FontAwesome.faCirclePlay);
@@ -58,11 +66,36 @@ export const MusicController = () => {
     };
   }
 
-  console.log(musicaAtual);
+  useEffect(() => {
+    async function trocouMusica() {
+      if (changeState == 1) {
+        setMusicaAtual(0);
+        alteraState(0);
+        PauseMusic();
+        () => {
+          PlayMusic();
+        };
+      }
+    }
+    trocouMusica();
+    // eslint-disable-next-line
+  }, [changeState]);
+
+  // function progresso(algoaqui) {
+  //   console.log(algoaqui);
+  // }
 
   return (
     <Styled.Container>
-      <ReactPlayer style={{ display: 'none' }} url={musicFila} playing={currentAction} />
+      <ReactPlayer
+        style={{ display: 'none' }}
+        url={musicFila}
+        playing={currentAction}
+        volume={1}
+        onDuration={(number) => {
+          Duration(number);
+        }}
+      />
       <Styled.BtnPlayer>
         <FontAwesomeIcon onClick={PrevMusic} icon={FontAwesome.faCircleArrowLeft} />
       </Styled.BtnPlayer>

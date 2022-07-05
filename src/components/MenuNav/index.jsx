@@ -6,7 +6,6 @@ import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
 export const MenuNav = () => {
   return (
     <Styled.Container>
-      {/* <Styled.Image src="https://logodownload.org/wp-content/uploads/2016/09/Spotify-logo.png" alt="Logo" /> */}
       <FontAwesomeIcon className={'Provisorio'} icon={FontAwesome.faRecordVinyl} />
       <Styled.NavList>
         <NavItems>
