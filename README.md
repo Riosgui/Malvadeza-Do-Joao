@@ -49,3 +49,7 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
   - Agora ao selecionar uma nova música ele retorna a posição que será tocada para 0 e começa a tocar ela automaticamente;
   - Criado o componente de Playlist que estará no menu, embora que ainda não ajustado para tal função;
   - Adicionado um teste de função para captar a duração da música e perceber quando ela acabar, para que assim possa pular para a proxima assim que uma acabar;
+
+- V 1.10:
+  - Ao acabar uma música, outra é iniciada na sequencia;
+  - Componente de playlists que estão no menu agora foi estilizado para como será, sendo esta a proxima adição do projeto;

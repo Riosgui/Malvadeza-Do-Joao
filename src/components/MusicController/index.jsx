@@ -12,6 +12,7 @@ export const MusicController = () => {
   const [musicFila, setMusicFila] = useState('');
   const [musicaAtual, setMusicaAtual] = useState(0);
   const [changeState, setChangeState] = useState(0);
+  const [duracao, setDuracao] = useState();
 
   useEffect(() => {
     async function defineMusic() {
@@ -27,6 +28,21 @@ export const MusicController = () => {
       setChangeState(change);
     }
   }, 100);
+
+  useEffect(() => {
+    async function trocouMusica() {
+      if (changeState == 1) {
+        setMusicaAtual(0);
+        alteraState(0);
+        PauseMusic();
+        () => {
+          PlayMusic();
+        };
+      }
+    }
+    trocouMusica();
+    // eslint-disable-next-line
+  }, [changeState]);
 
   function PlayMusic() {
     setCurrentIcon(FontAwesome.faCirclePlay);
@@ -66,24 +82,10 @@ export const MusicController = () => {
     };
   }
 
-  useEffect(() => {
-    async function trocouMusica() {
-      if (changeState == 1) {
-        setMusicaAtual(0);
-        alteraState(0);
-        PauseMusic();
-        () => {
-          PlayMusic();
-        };
-      }
-    }
-    trocouMusica();
-    // eslint-disable-next-line
-  }, [changeState]);
-
-  // function progresso(algoaqui) {
-  //   console.log(algoaqui);
-  // }
+  // eslint-disable-next-line
+  function showDuration(){
+    console.log(duracao);
+  }
 
   return (
     <Styled.Container>
@@ -93,8 +95,9 @@ export const MusicController = () => {
         playing={currentAction}
         volume={1}
         onDuration={(number) => {
-          Duration(number);
+          setDuracao(Duration(number));
         }}
+        onEnded={NextMusic}
       />
       <Styled.BtnPlayer>
         <FontAwesomeIcon onClick={PrevMusic} icon={FontAwesome.faCircleArrowLeft} />

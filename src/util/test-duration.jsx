@@ -1,9 +1,6 @@
 import React from 'react';
 
 export default function Duration(seconds) {
-  console.log(seconds);
-  let remaining = format(seconds);
-  console.log(remaining);
   return (
     <time dateTime={`P${Math.round(seconds)}S`} className={'className'}>
       {format(seconds)}
