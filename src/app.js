@@ -30,7 +30,7 @@ app.delete('/musicDelete', musicDelete)
 /* Playlist Content */
 app.get('/playlistAll', playlistSelectAll)
 
-app.get('/playlistOne', playlistSelectOne)
+app.post('/playlistOne', playlistSelectOne)
 
 app.post('/playlistInsert', playlistInsert)
 
