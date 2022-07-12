@@ -7,11 +7,13 @@ export const Container = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-between;
+
     .Provisorio {
       width: 50%;
       height: 50%;
       text-align: center;
       color: white;
+      cursor: pointer;
     }
   `}
 `;
@@ -20,6 +22,8 @@ export const NavList = styled.ul`
   ${() => css`
     width: 100%;
     padding-left: 0.45rem;
+    cursor: pointer;
+
     > h6 > svg {
       margin-right: 5rem;
     }

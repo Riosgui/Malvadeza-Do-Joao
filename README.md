@@ -53,3 +53,10 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
 - V 1.10:
   - Ao acabar uma música, outra é iniciada na sequencia;
   - Componente de playlists que estão no menu agora foi estilizado para como será, sendo esta a proxima adição do projeto;
+
+- V 1.11:
+  - Incluido a seleção de Playlists pela API da heroku;
+  - Incluido as playlists disponiveis ao menu juntamente com a funcionalidade de alterar a tela para visualisar as músicas presentes;
+  - Criação da página da playlist;
+  - Criação do componente de música para a página de playlist;
+  - Criação do card das playlists que estão no menu;

@@ -2,13 +2,24 @@ import * as Styled from './styles';
 import { NavItems } from '../NavItems';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
+import { alteraPag } from '../../util/selectPlaylist';
 
 export const MenuNav = () => {
   return (
     <Styled.Container>
-      <FontAwesomeIcon className={'Provisorio'} icon={FontAwesome.faRecordVinyl} />
+      <FontAwesomeIcon
+        onClick={() => {
+          alteraPag(0);
+        }}
+        className={'Provisorio'}
+        icon={FontAwesome.faRecordVinyl}
+      />
       <Styled.NavList>
-        <NavItems>
+        <NavItems
+          click={() => {
+            alteraPag(0);
+          }}
+        >
           <FontAwesomeIcon icon={FontAwesome.faHouse} />
           Home
         </NavItems>

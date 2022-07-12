@@ -7,6 +7,7 @@ let artistMusic = '';
 let imgMusic = '';
 let fila = [];
 let change = 0;
+
 export async function selectMusic(music) {
   let linkId = 'https://www.youtube.com/embed/' + (await music.music_id);
   link = linkId;

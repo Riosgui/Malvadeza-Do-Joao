@@ -1,9 +1,9 @@
 import P from 'prop-types';
 import * as Styled from './styles';
 
-export const NavItems = ({ children }) => {
+export const NavItems = ({ children, click }) => {
   return (
-    <Styled.Container>
+    <Styled.Container onClick={click}>
       <h6 style={{ fontWeight: '500' }}>{children}</h6>
     </Styled.Container>
   );
@@ -11,4 +11,5 @@ export const NavItems = ({ children }) => {
 
 NavItems.propTypes = {
   children: P.node.isRequired,
+  click: P.func,
 };
