@@ -2,12 +2,13 @@ import * as Styled from './styles';
 import { useState } from 'react';
 import { APIOneMusic, APIPlaylist } from '../../util/API-music';
 import { MusicCardPlaylist } from '../../components/MusicCardPlaylist';
-// import { selectPlaylist } from '../../util/selectPlaylist';
+import { selectMusic } from '../../util/selectMusic';
 
 export const PlaylistPage = () => {
   const [playlists, setPlaylists] = useState();
   const [filaPlay] = useState([]);
   const [check, setCheck] = useState(false);
+  const [musics] = useState([]);
 
   async function getPlaylist() {
     const playlistAPI = await APIPlaylist();
@@ -16,24 +17,41 @@ export const PlaylistPage = () => {
 
   async function getMusicsToPlaylist(id, pos) {
     const cuMusicsPlaylist = await APIOneMusic(id);
-    filaPlay[pos] = cuMusicsPlaylist;
-    // console.log(filaPlay);
+    filaPlay[pos] = await cuMusicsPlaylist;
     setCheck(true);
   }
 
-  let musics = [];
-  if (playlists == null) {
-    getPlaylist();
-  } else {
-    let musicsPlaylist = playlists[0].musics.split('$$');
+  async function defineMusics() {
+    for (let i = 0; i < filaPlay.length; i++) {
+      musics[i] = (
+        <MusicCardPlaylist
+          key={i}
+          click={() => {
+            selectMusic(filaPlay[i]);
+          }}
+          nome={await filaPlay[i].music_name}
+          link={await filaPlay[i].music_id}
+        />
+      );
+    }
+  }
+
+  async function getMusics() {
+    let musicsPlaylist = await playlists[0].musics.split('$$');
     for (let i = 0; i < musicsPlaylist.length; i++) {
       getMusicsToPlaylist(musicsPlaylist[i], i);
     }
   }
+
+  if (playlists == null) {
+    getPlaylist();
+  } else {
+    getMusics();
+  }
   if (check != false) {
-    for (let i = 0; i < filaPlay.length; i++) {
-      musics[i] = <MusicCardPlaylist key={i} nome={filaPlay[i].music_name} link={filaPlay[i].music_id} />;
-    }
+    setTimeout(() => {
+      defineMusics();
+    }, 100);
   }
 
   // selectPlaylist(0);

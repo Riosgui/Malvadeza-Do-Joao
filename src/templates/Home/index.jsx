@@ -11,15 +11,16 @@ function Home() {
 
   setInterval(() => {
     setPagRender(pag);
-    console.log(pag);
-  }, 100);
+  }, 600);
 
   let render = '';
+
   if (pagRender == 0) {
     render = <ContentPage />;
   } else {
     render = <PlaylistPage />;
   }
+
   return (
     <Styled.Container>
       <Menu />

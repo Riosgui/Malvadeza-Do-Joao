@@ -3,13 +3,13 @@ import * as Styled from './styles';
 import * as FontAwesome from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const MusicCardPlaylist = ({ nome, link }) => {
+export const MusicCardPlaylist = ({ nome, link, click }) => {
   return (
     <Styled.Container>
       <img src={'https://img.youtube.com/vi/' + link + '/0.jpg'} alt="Imagem da musica" />
       <div>
         <p>{nome}</p>
-        <a>
+        <a onClick={click}>
           <FontAwesomeIcon icon={FontAwesome.faCirclePlay} />
         </a>
       </div>
@@ -20,4 +20,5 @@ export const MusicCardPlaylist = ({ nome, link }) => {
 MusicCardPlaylist.propTypes = {
   nome: P.string.isRequired,
   link: P.string.isRequired,
+  click: P.func,
 };

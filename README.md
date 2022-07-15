@@ -60,3 +60,7 @@ Projeto onde tento replicar o spotify e fazer algumas doideras dentro dele que d
   - Criação da página da playlist;
   - Criação do componente de música para a página de playlist;
   - Criação do card das playlists que estão no menu;
+
+- V 1.12:
+  - Melhoria no carregamento da página de playlist;
+  - Adição da função de play na música pela página de playlist;

@@ -13,6 +13,7 @@ export const MusicController = () => {
   const [musicaAtual, setMusicaAtual] = useState(0);
   const [changeState, setChangeState] = useState(0);
   const [duracao, setDuracao] = useState();
+  const [error, setError] = useState(0);
 
   useEffect(() => {
     async function defineMusic() {
@@ -50,10 +51,21 @@ export const MusicController = () => {
     setMusicFila(fila[musicaAtual].link);
   }
 
+  var msgError = <div className="msgError">Não há música selecionada!</div>;
+
   function PauseMusic() {
-    setCurrentIcon(FontAwesome.faCirclePause);
-    setCurrentAction(true);
-    setMusicFila(fila[musicaAtual].link);
+    if (fila.length != 0) {
+      setCurrentIcon(FontAwesome.faCirclePause);
+      setCurrentAction(true);
+      setMusicFila(fila[musicaAtual].link);
+    } else {
+      setTimeout(() => {
+        setError(1);
+        setTimeout(() => {
+          setError(0);
+        }, 4000);
+      }, 300);
+    }
   }
 
   function NextMusic() {
@@ -99,14 +111,13 @@ export const MusicController = () => {
         }}
         onEnded={NextMusic}
       />
+      {error == 1 ? msgError : ''}
       <Styled.BtnPlayer>
         <FontAwesomeIcon onClick={PrevMusic} icon={FontAwesome.faCircleArrowLeft} />
       </Styled.BtnPlayer>
-
       <Styled.BtnPlayer>
         <FontAwesomeIcon onClick={currentAction == true ? PlayMusic : PauseMusic} id="BtnPlay" icon={currentIcon} />
       </Styled.BtnPlayer>
-
       <Styled.BtnPlayer>
         <FontAwesomeIcon onClick={NextMusic} icon={FontAwesome.faCircleArrowRight} />
       </Styled.BtnPlayer>

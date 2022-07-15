@@ -27,10 +27,10 @@ export const MenuNav = () => {
           <FontAwesomeIcon icon={FontAwesome.faMagnifyingGlass} />
           Pesquisar
         </NavItems>
-        <NavItems>
+        {/* <NavItems>
           <FontAwesomeIcon icon={FontAwesome.faCompactDisc} />
           Biblioteca
-        </NavItems>
+        </NavItems> */}
       </Styled.NavList>
     </Styled.Container>
   );

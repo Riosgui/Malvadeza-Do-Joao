@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
   ${() => css`
     min-width: 280px;
-    width: 25vw;
+    width: 35vw;
     height: 100%;
     padding: 5px;
     display: flex;

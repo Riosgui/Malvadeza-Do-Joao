@@ -2,17 +2,18 @@ import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   ${() => css`
-    height: 40%;
+    height: 30%;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-between;
 
     .Provisorio {
-      width: 50%;
+      width: 60%;
       height: 50%;
       text-align: center;
       color: white;
+      margin-top: 20px;
       cursor: pointer;
     }
   `}
